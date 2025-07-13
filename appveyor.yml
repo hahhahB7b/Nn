@@ -1,0 +1,21 @@
+version: 1.0.{build}
+image: Ubuntu2204
+
+init:
+  - echo "Initializing AppVeyor Build..."
+
+install:
+  - echo "No dependencies to install."
+
+build_script:
+  - echo "Creating m.py..."
+  - |
+    echo "import time" > m.py
+    echo "while True:" >> m.py
+    echo "    print('Still running...')" >> m.py
+    echo "    time.sleep(30)" >> m.py
+  - echo "Running m.py..."
+  - python3 m.py
+
+on_finish:
+  - echo "Build completed or timed out."
